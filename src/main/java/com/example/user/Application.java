@@ -4,6 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 import com.example.run.Run;
 import com.example.run.Location;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
 @SpringBootApplication
+@ComponentScan(basePackages = "com.example.run")
 public class Application {
 
 	private static final Logger log = LoggerFactory.getLogger(Application.class);
