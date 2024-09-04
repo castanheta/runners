@@ -1,4 +1,4 @@
-package com.example.user;
+package com.example;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 import com.example.run.Run;
+import com.example.run.RunRepository;
 import com.example.run.Location;
 
 import org.slf4j.*;
@@ -25,10 +26,10 @@ public class Application {
 	}
 
 	@Bean
-	CommandLineRunner runner(){
+	CommandLineRunner runner(RunRepository runRepository){
 		return args -> {
 			Run run = new Run(1, "Long run", LocalDateTime.now(), LocalDateTime.now().plus(1, ChronoUnit.HOURS), 10, Location.OUTDOOR);
-			log.info("Run: " + run);
+			runRepository.create(run);
 		};
 	}
 }
